@@ -159,7 +159,6 @@ RC Db::drop_table(const char *table_name) {
     if(rc!=RC::SUCCESS){
         return rc;
     }
-
     opened_tables_.erase(it);
     delete table;
     return RC::SUCCESS;

@@ -165,7 +165,7 @@ void DefaultStorageStage::handle_event(StageEvent *event) {
         case SCF_DROP_TABLE:{
             const DropTable &drop_table=sql->sstr.drop_table;
             rc=handler_->drop_table(dbname,drop_table.relation_name);
-            snprintf(response,sizeof(response),"%s",strrc(rc));
+            snprintf(response,sizeof(response),"%s\n",rc==RC::SUCCESS?"SUCCESS":"FAILURE");
         }
             break;
         default:
