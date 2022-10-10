@@ -54,6 +54,8 @@ python3 miniob_test.py \
         --use-unix-socket \
         --git-repo=https://github.com/yeqiyi/miniob.git \
         --git-branch=main \
+        --git-user=yeqiyi \
+        --git-token=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 \
         --code-type=git \
         --target-dir=./miniob \
         --log=stdout \
@@ -214,7 +216,7 @@ class MiniObServer:
 
     self.__process = process
     time.sleep(0.2)
-    if not self.__wait_server_started(10):
+    if not self.__wait_server_started(60):
       time_span = time.time() - time_begin
       logging.error("Failed to start server in %f seconds", time_span)
       return False

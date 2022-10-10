@@ -162,5 +162,5 @@ RC Db::drop_table(const char *table_name) {
 
     opened_tables_.erase(it);
     delete table;
-    return LOCKED_SHAREDCACHE;
+    return RC::SUCCESS;
 }
