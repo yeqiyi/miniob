@@ -154,6 +154,13 @@ RC Db::drop_table(const char *table_name) {
         return SCHEMA_TABLE_NOT_EXIST;
     }
     Table *table=it->second;
-    RC rc=
+    auto table_file_path= table_meta_file(path_.c_str(),table_name);
+    RC rc=table->drop(table_file_path.c_str(),path_.c_str());
+    if(rc!=RC::SUCCESS){
+        return rc;
+    }
+
+    opened_tables_.erase(it);
+    delete table;
     return LOCKED_SHAREDCACHE;
 }
