@@ -147,3 +147,13 @@ RC Db::sync()
   LOG_INFO("Successfully sync db. db=%s", name_.c_str());
   return rc;
 }
+
+RC Db::drop_table(const char *table_name) {
+    auto it=opened_tables_.find(table_name);
+    if(it==opened_tables_.end()){
+        return SCHEMA_TABLE_NOT_EXIST;
+    }
+    Table *table=it->second;
+    RC rc=
+    return LOCKED_SHAREDCACHE;
+}
